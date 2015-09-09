@@ -1,8 +1,11 @@
+@blue : #337ab7;
+@grey : rgba(0,0,0,.2);
+@white: #ffffff;
 body{
-  background-color: rgba(0,0,0,.2);
+  background-color: @white;
 
   .navbar {
-    background-color: #ffffff;
+    background-color: @white;
   }
 
   .h100{
@@ -10,7 +13,16 @@ body{
   }
 
   .label{
-    color:red;
+    color:@blue;
     font-size: 12px;
   }
+
+  .blue{
+    color:@blue;
+  }
+
+  .w16{
+    width:16% !important;
+  }
+
 }
