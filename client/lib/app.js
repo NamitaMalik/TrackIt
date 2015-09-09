@@ -2,4 +2,4 @@
  * Created by namita on 9/9/15.
  */
 
-angular.module('trackIt',['angular-meteor']);
+angular.module('trackIt',['angular-meteor','ui.router']);

@@ -10,3 +10,4 @@ insecure
 angular
 twbs:bootstrap
 less
+angularui:angular-ui-router
