@@ -22,12 +22,22 @@ angular.module('trackIt').controller('TaskListCtrl',['$scope','$meteor',function
 
     function DateDiff(date1, date2) {
         var datediff = date1.getTime() - date2.getTime();
-        console.log(datediff);
         return Number(datediff / (24 * 60 * 60 * 1000))+1;
     }
 
     $scope.removeTask = function(index){
         $scope.tasks.splice(index,1);
+    };
+
+    $scope.updateEffort= function(task){
+        var estEndDate = task.estEndDate.split('/');
+        var d = new Date(parseInt(estEndDate[2]),parseInt(estEndDate[1]) - 1,parseInt(estEndDate[0]));
+        var actEndDate = task.actEndDate.split('/');
+        var d1 = new Date(parseInt(actEndDate[2]),parseInt(actEndDate[1]) - 1,parseInt(actEndDate[0]));
+        task.deviation = DateDiff(d1, d)-1;
+        if(isNaN(task.deviation)){
+            task.deviation = 0;
+        }
     }
 
 
