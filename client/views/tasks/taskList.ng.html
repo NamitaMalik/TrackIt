@@ -4,35 +4,21 @@
         <thead class="blue">
         <th>Task</th>
         <th>Start Date</th>
-        <th>Estimate</th>
         <th>Estimated End Date</th>
         <th>Original End Date</th>
+        <th>Estimated Effort</th>
         <th>Deviation</th>
+        <th>Action(s)</th>
         </thead>
         <tbody>
-        <tr>
+        <tr ng-repeat="task in tasks">
+            <td>{{task.name}}</td>
+            <td>{{task.startDate}}</td>
+            <td>{{task.estEndDate}}</td>
             <td>John</td>
-            <td>John</td>
-            <td>John</td>
-            <td>John</td>
-            <td>John</td>
+            <td>{{task.estEffort}}</td>
             <td>Doe</td>
-        </tr>
-        <tr>
-            <td>Mary</td>
-            <td>Mary</td>
-            <td>Mary</td>
-            <td>Mary</td>
-            <td>Mary</td>
-            <td>Moe</td>
-        </tr>
-        <tr>
-            <td>July</td>
-            <td>July</td>
-            <td>July</td>
-            <td>July</td>
-            <td>July</td>
-            <td>Dooley</td>
+            <td><a href="" ng-click="removeTask($index)">Delete</a></td>
         </tr>
         </tbody>
 
@@ -41,22 +27,28 @@
 <div class="container">
     <form class="form-horizontal">
         <div class="form-group form-group-lg">
-            <label class="col-sm-3 control-label blue w16" for="task">Add Task</label>
+            <label class="col-sm-3 control-label f15 blue w16" for="task">Add Task</label>
             <div class="col-sm-9">
-                <input class="form-control" id="task" type="text" placeholder="Type task and press Enter">
+                <input class="form-control" id="task" type="text" ng-model="task.name" placeholder="Type task and press Enter">
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-sm-3 control-label blue w16" for="task">Start Date</label>
+            <label class="col-sm-3 control-label f15 blue w16" for="task">Start Date</label>
             <div class="col-sm-9">
-                <input class="form-control" id="task" type="text" placeholder="Type task and press Enter">
+                <input class="form-control" id="stDate" type="text" ng-model="task.startDate" placeholder="Type task and press Enter">
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-sm-3 control-label blue w16" for="task">End Date</label>
+            <label class="col-sm-3 control-label f15 blue w16" for="task">Estimated End Date</label>
             <div class="col-sm-9">
-                <input class="form-control" id="task" type="text" placeholder="Type task and press Enter">
+                <input class="form-control" id="estDate" type="text" ng-model="task.estEndDate" placeholder="Type task and press Enter">
             </div>
         </div>
     </form>
+    <div class="form-horizontal">
+        <div class="col-sm-4">&nbsp;</div>
+        <button type="button" class="btn btn-primary col-sm-4" ng-click="addTask(task)">Add Task</button>
+        <div class="col-sm-4">&nbsp;</div>
+    </div>
+
 </div>
