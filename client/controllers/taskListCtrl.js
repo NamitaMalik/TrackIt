@@ -3,9 +3,10 @@
  */
 
 
-angular.module('trackIt').controller('TaskListCtrl',['$scope','$meteor',function($scope,$meteor){
+angular.module('trackIt').controller('TaskListCtrl',['$scope','$rootScope','$meteor',function($scope,$rootScope,$meteor){
 
-    $scope.tasks = $meteor.collection(Tasks);
+    $scope.tasks = $meteor.collection(Tasks).subscribe('tasks');
+    $scope.users = $meteor.collection(Meteor.users, false).subscribe('users');
 
     $scope.addTask = function(task){
         var startDate = task.startDate.split('/');
