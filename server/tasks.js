@@ -2,7 +2,7 @@
  * Created by namita on 9/17/15.
  */
 
-Meteor.publish("tasks", function () {
+Meteor.publish("tasks", function (options) {
     return Tasks.find({
         $or:[
             {$and:[
@@ -13,5 +13,5 @@ Meteor.publish("tasks", function () {
                 {owner: this.userId},
                 {owner: {$exists: true}}
             ]}
-        ]});
+        ]}, options);
 });

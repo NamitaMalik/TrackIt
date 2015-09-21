@@ -5,7 +5,24 @@
 
 angular.module('trackIt').controller('TaskListCtrl',['$scope','$rootScope','$meteor',function($scope,$rootScope,$meteor){
 
-    $scope.tasks = $meteor.collection(Tasks).subscribe('tasks');
+    $scope.sort={name:1};
+    $scope.orderProperty = '1';
+
+    $scope.tasks = $meteor.collection(function() {
+        return Tasks.find({}, {
+            sort : $scope.getReactively('sort')
+        });
+    });
+    $meteor.autorun($scope, function() {
+        $meteor.subscribe('tasks', {
+            sort: $scope.getReactively('sort')
+        });
+    });
+
+    $scope.$watch('orderProperty', function(){
+        if ($scope.orderProperty)
+            $scope.sort = {name: parseInt($scope.orderProperty)};
+    });
     $scope.users = $meteor.collection(Meteor.users, false).subscribe('users');
 
     $scope.addTask = function(task){
